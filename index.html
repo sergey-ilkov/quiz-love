@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNITE HEART</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.png">
+
+    <style>
+        /* ? preloader */
+        .preloader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-white);
+            opacity: 1;
+            z-index: 20;
+        }
+
+        .preloader.hidden {
+            opacity: 1;
+            transition: all 0.5s ease;
+            animation: preloader-hidden 1s ease forwards;
+        }
+
+        @keyframes preloader-hidden {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                display: none;
+            }
+        }
+
+        .preloader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .preloader-ring {
+            font-family: monospace;
+            font-size: 14px;
+            color: var(--accent-color);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .preloader.hidden span {
+            display: none;
+        }
+
+        .preloader-ring span {
+            display: block;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--color-grey);
+            animation: anim-preload 0.6s ease infinite;
+        }
+
+        @keyframes anim-preload {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .preloader-ring span:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--accent-color);
+        }
+
+        .preloader-ring span::after {
+            content: '';
+            position: absolute;
+            top: 5%;
+            right: 8%;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+    </style>
+
+    <link rel="stylesheet" href="./css/style.css?v=2.0.1">
+</head>
+
+<body>
+
+
+
+    <div class="wrapper">
+
+        <header class="header">
+            <div class="container">
+                <div class="header__inner">
+                    <div class="header__logo">
+                        <img class="header__logo-image" src="./images/logo.png" alt="logo">
+                    </div>
+                    <p class="header__copyright">© 2010–2024 UniteHeart. All Rights Reserved</p>
+                </div>
+            </div>
+        </header>
+
+
+
+        <section class="hero">
+            <div class="preloader">
+                <div class="preloader-ring">Loading<span></span></div>
+            </div>
+
+            <div id="slider-bg" class="slider-bg">
+                <div class="slider-bg__item" data-image="./images/girls/01.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/02.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/03.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/04.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/05.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/06.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/07.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/08.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/09.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/10.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/11.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/12.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/13.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/14.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/15.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/16.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/17.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/18.jpg"></div>
+                <div class="slider-bg__item" data-image="./images/girls/19.jpg"></div>
+            </div>
+
+
+            <div id="quiz-love" class="quiz-love hidden">
+
+
+                <div id="quiz-love-item-1" class="quiz-love__item  active">
+                    <div class="quiz-love__item-image">
+                        <img class="quiz-love__image" src="./images/quiz.jpg" alt="love">
+                    </div>
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">True Love is a Click Away!</h3>
+                        <p class="quiz-love__item-text"> Warning: Females Outnumber the Men 7 to 1 on UniteHeart</p>
+                    </div>
+                    <button class="quiz-love__btn btn-accent" data-next="quiz-love-item-2">OK</button>
+                </div>
+
+
+                <div id="quiz-love-item-2" class="quiz-love__item">
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">Please note</h3>
+                        <p class="quiz-love__item-text">Before we can process your free membership we need to ask a few quick questions.</p>
+                    </div>
+                    <button class="quiz-love__btn btn-accent" data-next="quiz-love-item-3">
+                        <span>Continue</span>
+                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.5303 7.03033C16.8232 6.73744 16.8232 6.26256 16.5303 5.96967L11.7574 1.1967C11.4645 0.903806 10.9896 0.903806 10.6967 1.1967C10.4038 1.48959 10.4038 1.96447 10.6967 2.25736L14.9393 6.5L10.6967 10.7426C10.4038 11.0355 10.4038 11.5104 10.6967 11.8033C10.9896 12.0962 11.4645 12.0962 11.7574 11.8033L16.5303 7.03033ZM0 7.25H16V5.75H0V7.25Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+                </div>
+
+
+                <div id="quiz-love-item-3" class="quiz-love__item" data-step-name="question-1" data-question="answer">
+                    <div class="quiz-love__progress-1">
+                        <span class="quiz-love__progress-item number-active">1</span>
+                        <span class="quiz-love__progress-item">2</span>
+                        <span class="quiz-love__progress-item">3</span>
+                        <span class="quiz-love__progress-item">4</span>
+                        <span class="quiz-love__progress-line" style="--progress-width: 0%"></span>
+                    </div>
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">Question 1</h3>
+                        <p class="quiz-love__item-text"> Many of the women on our site are looking for a serious love.</p>
+                        <p class="quiz-love__item-text">Do you promise to treat them with respect?</p>
+                    </div>
+                    <div class="quiz-love__buttons">
+                        <button class="quiz-love__btn btn-green" data-next="quiz-love-item-4" data-value="yes">Yes</button>
+                        <button class="quiz-love__btn btn-red" data-next="quiz-love-item-4" data-value="no">No</button>
+                    </div>
+                </div>
+
+
+                <div id="quiz-love-item-4" class="quiz-love__item" data-step-name="question-2" data-question="answer">
+                    <div class="quiz-love__progress-1">
+                        <span class="quiz-love__progress-item number-active">1</span>
+                        <span class="quiz-love__progress-item number-active">2</span>
+                        <span class="quiz-love__progress-item">3</span>
+                        <span class="quiz-love__progress-item">4</span>
+                        <span class="quiz-love__progress-line" style="--progress-width: 33%"></span>
+                    </div>
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">Question 2</h3>
+
+                        <p class="quiz-love__item-text">
+                            Our female members have asked us not to allow men who arent ready for a possible relationship.
+                        </p>
+                        <p class="quiz-love__item-text">Are you looking for a serious relationship?</p>
+                    </div>
+                    <div class="quiz-love__buttons">
+                        <button class="quiz-love__btn btn-green" data-next="quiz-love-item-5" data-value="yes">Yes</button>
+                        <button class="quiz-love__btn btn-red" data-next="quiz-love-item-5" data-value="no">No</button>
+                    </div>
+                </div>
+
+
+                <div id="quiz-love-item-5" class="quiz-love__item" data-step-name="question-3" data-question="answer">
+                    <div class="quiz-love__progress-1">
+                        <span class="quiz-love__progress-item number-active">1</span>
+                        <span class="quiz-love__progress-item number-active">2</span>
+                        <span class="quiz-love__progress-item number-active">3</span>
+                        <span class="quiz-love__progress-item">4</span>
+                        <span class="quiz-love__progress-line" style="--progress-width: 66%"></span>
+                    </div>
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">Question 3</h3>
+
+                        <p class="quiz-love__item-text">
+                            Are you okay with the woman making the first move? Females outnumber our male members and can be aggresive for
+                            your attention.
+                        </p>
+
+                    </div>
+                    <div class="quiz-love__buttons">
+                        <button class="quiz-love__btn btn-green" data-next="quiz-love-item-6" data-value="yes">Yes</button>
+                        <button class="quiz-love__btn btn-red" data-next="quiz-love-item-6" data-value="no">No</button>
+                    </div>
+                </div>
+
+
+                <div id="quiz-love-item-6" class="quiz-love__item" data-step-name="question-4" data-question="answer">
+                    <div class="quiz-love__progress-1">
+                        <span class="quiz-love__progress-item number-active">1</span>
+                        <span class="quiz-love__progress-item number-active">2</span>
+                        <span class="quiz-love__progress-item number-active">3</span>
+                        <span class="quiz-love__progress-item number-active">4</span>
+                        <span class="quiz-love__progress-line" style="--progress-width: 100%"></span>
+                    </div>
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">Question 4</h3>
+
+                        <p class="quiz-love__item-text">
+                            You are likely to receive multiple emails and chat requests from our members. Are you comfortable with this?
+                        </p>
+
+                    </div>
+                    <div class="quiz-love__buttons">
+                        <button class="quiz-love__btn btn-green" data-next="quiz-love-item-7" data-value="yes">Yes</button>
+                        <button class="quiz-love__btn btn-red" data-next="quiz-love-item-7" data-value="no">No</button>
+                    </div>
+                </div>
+
+
+                <div id="quiz-love-item-7" class="quiz-love__item quiz-love__item-checkbox" data-validation="3"
+                    data-step-name="kind-of-body" data-question="choose">
+
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">What kind of body type do you prefer?</h3>
+                        <p class="quiz-love__item-text">Please choose up to 3 answers</p>
+                    </div>
+
+                    <div class="quiz-love__checkbox-group">
+                        <div class="quiz-love__checkbox">
+                            <input id="skinny" class="quiz-love__input-checkbox" type="checkbox" name="Skinny" value="Skinny">
+                            <label class="quiz-love__label" for="skinny">Skinny</label>
+                        </div>
+                        <div class="quiz-love__checkbox">
+                            <input id="athletic" class="quiz-love__input-checkbox" type="checkbox" name="Athletic" value="Athletic">
+                            <label class="quiz-love__label" for="athletic">Athletic</label>
+                        </div>
+                        <div class="quiz-love__checkbox">
+                            <input id="average" class="quiz-love__input-checkbox" type="checkbox" name="Average" value="Average">
+                            <label class="quiz-love__label" for="average">Average</label>
+                        </div>
+                        <div class="quiz-love__checkbox">
+                            <input id="chubby" class="quiz-love__input-checkbox" type="checkbox" name="Chubby" value="Chubby">
+                            <label class="quiz-love__label" for="chubby">Chubby</label>
+                        </div>
+                        <div class="quiz-love__checkbox">
+                            <input id="bbw" class="quiz-love__input-checkbox" type="checkbox" name="BBW" value="BBW">
+                            <label class="quiz-love__label" for="bbw">BBW (Big Beautiful Woman)</label>
+                        </div>
+                        <div class="quiz-love__checkbox">
+                            <input id="no-preference" class="quiz-love__input-checkbox" type="checkbox" name="no-preference"
+                                value="No Preference">
+                            <label class="quiz-love__label" for="no-preference">No Preference</label>
+                        </div>
+                    </div>
+
+                    <p class="quiz-love__error">Please choose up to 3 answers</p>
+
+                    <button class="quiz-love__btn btn-accent " data-next="quiz-love-item-8">
+                        <span>Next</span>
+                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.5303 7.03033C16.8232 6.73744 16.8232 6.26256 16.5303 5.96967L11.7574 1.1967C11.4645 0.903806 10.9896 0.903806 10.6967 1.1967C10.4038 1.48959 10.4038 1.96447 10.6967 2.25736L14.9393 6.5L10.6967 10.7426C10.4038 11.0355 10.4038 11.5104 10.6967 11.8033C10.9896 12.0962 11.4645 12.0962 11.7574 11.8033L16.5303 7.03033ZM0 7.25H16V5.75H0V7.25Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+
+                </div>
+
+
+                <div id="quiz-love-item-8" class="quiz-love__item quiz-love__item-radio" data-validation="1" data-step-name="age-group"
+                    data-question="choose">
+
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">Which age group fits you best?</h3>
+                        <p class="quiz-love__item-text">Please choose up 1 answer</p>
+                    </div>
+
+                    <div class="quiz-love__radio-group">
+                        <div class="quiz-love__radio">
+                            <input id="age-1" class="quiz-love__input-radio" type="radio" name="age-group" value="18-25">
+                            <label class="quiz-love__label" for="age-1">18-25</label>
+                        </div>
+                        <div class="quiz-love__radio">
+                            <input id="age-2" class="quiz-love__input-radio" type="radio" name="age-group" value="26-34">
+                            <label class="quiz-love__label" for="age-2">26-34</label>
+                        </div>
+                        <div class="quiz-love__radio">
+                            <input id="age-3" class="quiz-love__input-radio" type="radio" name="age-group" value="35-40">
+                            <label class="quiz-love__label" for="age-3">35-40</label>
+                        </div>
+                        <div class="quiz-love__radio">
+                            <input id="age-4" class="quiz-love__input-radio" type="radio" name="age-group" value="41-45">
+                            <label class="quiz-love__label" for="age-4">41-45</label>
+                        </div>
+                        <div class="quiz-love__radio">
+                            <input id="age-5" class="quiz-love__input-radio" type="radio" name="age-group" value="45 and up">
+                            <label class="quiz-love__label" for="age-5">45 and up</label>
+                        </div>
+                    </div>
+
+                    <p class="quiz-love__error">Please choose up 1 answer</p>
+
+                    <button class="quiz-love__btn btn-accent " data-next="quiz-love-item-9">
+                        <span>Next</span>
+                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.5303 7.03033C16.8232 6.73744 16.8232 6.26256 16.5303 5.96967L11.7574 1.1967C11.4645 0.903806 10.9896 0.903806 10.6967 1.1967C10.4038 1.48959 10.4038 1.96447 10.6967 2.25736L14.9393 6.5L10.6967 10.7426C10.4038 11.0355 10.4038 11.5104 10.6967 11.8033C10.9896 12.0962 11.4645 12.0962 11.7574 11.8033L16.5303 7.03033ZM0 7.25H16V5.75H0V7.25Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+
+                </div>
+
+
+                <div id="quiz-love-item-9" class="quiz-love__item quiz-love__item-checkbox" data-validation="3"
+                    data-step-name="type-of-relationship" data-question="choose">
+
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">What type of relationship are you looking for?</h3>
+                        <p class="quiz-love__item-text">Please choose up to 3 answers</p>
+                    </div>
+
+                    <div class="quiz-love__checkbox-group">
+                        <div class="quiz-love__checkbox">
+                            <input id="curious" class="quiz-love__input-checkbox" type="checkbox" name="Just-Curious" value="Just Curious">
+                            <label class="quiz-love__label" for="curious">Just Curious</label>
+                        </div>
+                        <div class="quiz-love__checkbox">
+                            <input id="everyday" class="quiz-love__input-checkbox" type="checkbox" name="Casual" value="Casual">
+                            <label class="quiz-love__label" for="everyday">Casual</label>
+                        </div>
+                        <div class="quiz-love__checkbox">
+                            <input id="friendship" class="quiz-love__input-checkbox" type="checkbox" name="Friendship" value="Friendship">
+                            <label class="quiz-love__label" for="friendship">Friendship</label>
+                        </div>
+                        <div class="quiz-love__checkbox">
+                            <input id="meet" class="quiz-love__input-checkbox" type="checkbox" name="Dating" value="Dating">
+                            <label class="quiz-love__label" for="meet">Dating</label>
+                        </div>
+                        <div class="quiz-love__checkbox">
+                            <input id="seriously" class="quiz-love__input-checkbox" type="checkbox" name="Serious-Relationship"
+                                value="Serious Relationship">
+                            <label class="quiz-love__label" for="seriously">Serious Relationship</label>
+                        </div>
+                        <div class="quiz-love__checkbox">
+                            <input id="not-sure" class="quiz-love__input-checkbox" type="checkbox" name="Not Sure" value="Not Sure">
+                            <label class="quiz-love__label" for="not-sure">Not Sure</label>
+                        </div>
+                    </div>
+
+                    <p class="quiz-love__error">Please choose up to 3 answers</p>
+
+                    <button class="quiz-love__btn btn-accent " data-next="quiz-love-item-10">
+                        <span>Next</span>
+                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.5303 7.03033C16.8232 6.73744 16.8232 6.26256 16.5303 5.96967L11.7574 1.1967C11.4645 0.903806 10.9896 0.903806 10.6967 1.1967C10.4038 1.48959 10.4038 1.96447 10.6967 2.25736L14.9393 6.5L10.6967 10.7426C10.4038 11.0355 10.4038 11.5104 10.6967 11.8033C10.9896 12.0962 11.4645 12.0962 11.7574 11.8033L16.5303 7.03033ZM0 7.25H16V5.75H0V7.25Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+
+                </div>
+
+
+                <div id="quiz-love-item-10" class="quiz-love__item">
+
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">Thank You!</h3>
+                        <p class="quiz-love__item-text">
+                            You man now browse our website. <br>
+                            Please treat our members kindly! <br>
+                            Click on the ‘Countinue’ button and start searching.
+                        </p>
+                    </div>
+
+
+                    <button class="quiz-love__btn btn-accent " data-next="quiz-love-item-11">
+                        <span>Continue</span>
+                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.5303 7.03033C16.8232 6.73744 16.8232 6.26256 16.5303 5.96967L11.7574 1.1967C11.4645 0.903806 10.9896 0.903806 10.6967 1.1967C10.4038 1.48959 10.4038 1.96447 10.6967 2.25736L14.9393 6.5L10.6967 10.7426C10.4038 11.0355 10.4038 11.5104 10.6967 11.8033C10.9896 12.0962 11.4645 12.0962 11.7574 11.8033L16.5303 7.03033ZM0 7.25H16V5.75H0V7.25Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+
+                </div>
+
+
+                <div id="quiz-love-item-11" class="quiz-love__item " data-step-name="email" data-question="email">
+                    <div class="quiz-love__progress-2">
+                        <span class="quiz-love__progress-item number-active">1</span>
+                        <span class="quiz-love__progress-item">2</span>
+                        <span class="quiz-love__progress-item">3</span>
+                        <span class="quiz-love__progress-item">4</span>
+                        <span class="quiz-love__progress-line" style="--progress-width: 0%"></span>
+                    </div>
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">Please enter your email</h3>
+
+                        <input class="quiz-love__input" type="email" placeholder="Email">
+                        <p class="quiz-love__error">Please enter your email</p>
+                    </div>
+
+
+                    <button class="quiz-love__btn btn-accent " data-next="quiz-love-item-12">
+                        <span>Continue</span>
+                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.5303 7.03033C16.8232 6.73744 16.8232 6.26256 16.5303 5.96967L11.7574 1.1967C11.4645 0.903806 10.9896 0.903806 10.6967 1.1967C10.4038 1.48959 10.4038 1.96447 10.6967 2.25736L14.9393 6.5L10.6967 10.7426C10.4038 11.0355 10.4038 11.5104 10.6967 11.8033C10.9896 12.0962 11.4645 12.0962 11.7574 11.8033L16.5303 7.03033ZM0 7.25H16V5.75H0V7.25Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+
+                </div>
+
+
+                <div id="quiz-love-item-12" class="quiz-love__item" data-step-name="password" data-question="password">
+                    <div class="quiz-love__progress-2">
+                        <span class="quiz-love__progress-item number-active">1</span>
+                        <span class="quiz-love__progress-item number-active">2</span>
+                        <span class="quiz-love__progress-item">3</span>
+                        <span class="quiz-love__progress-item">4</span>
+                        <span class="quiz-love__progress-line" style="--progress-width: 33%"></span>
+                    </div>
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">Please choose your password</h3>
+
+                        <input class="quiz-love__input" type="text" placeholder="Password">
+                        <p class="quiz-love__error">Please enter your password. Min. 6 characters</p>
+                    </div>
+
+                    <button class="quiz-love__btn btn-accent " data-next="quiz-love-item-13">
+                        <span>Continue</span>
+                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.5303 7.03033C16.8232 6.73744 16.8232 6.26256 16.5303 5.96967L11.7574 1.1967C11.4645 0.903806 10.9896 0.903806 10.6967 1.1967C10.4038 1.48959 10.4038 1.96447 10.6967 2.25736L14.9393 6.5L10.6967 10.7426C10.4038 11.0355 10.4038 11.5104 10.6967 11.8033C10.9896 12.0962 11.4645 12.0962 11.7574 11.8033L16.5303 7.03033ZM0 7.25H16V5.75H0V7.25Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+
+                </div>
+
+
+                <div id="quiz-love-item-13" class="quiz-love__item" data-step-name="birthday" data-question="birthday">
+                    <div class="quiz-love__progress-2">
+                        <span class="quiz-love__progress-item number-active">1</span>
+                        <span class="quiz-love__progress-item number-active">2</span>
+                        <span class="quiz-love__progress-item number-active">3</span>
+                        <span class="quiz-love__progress-item">4</span>
+                        <span class="quiz-love__progress-line" style="--progress-width: 66%"></span>
+                    </div>
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">Please choose your birthday</h3>
+                        <div class="quiz-love__select-row">
+
+                            <div class="quiz-love__select-group">
+                                <select id="quiz-love__select-month" class="quiz-love__select" name="month">
+                                    <option value="">MM</option>
+                                    <option value="1">Jan</option>
+                                    <option value="2">Feb</option>
+                                    <option value="3">Mar</option>
+                                    <option value="4">Apr</option>
+                                    <option value="5">May</option>
+                                    <option value="6">Jun</option>
+                                    <option value="7">Jul</option>
+                                    <option value="8">Aug</option>
+                                    <option value="9">Sep</option>
+                                    <option value="10">Oct</option>
+                                    <option value="11">Nov</option>
+                                    <option value="12">Dec</option>
+                                </select>
+                            </div>
+
+                            <div class="quiz-love__select-group">
+                                <select id="quiz-love__select-day" class="quiz-love__select" name="day">
+                                    <option value="">DD</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select>
+                            </div>
+
+                            <div class="quiz-love__select-group">
+                                <select id="quiz-love__select-year" class="quiz-love__select" name="year">
+                                    <option value="">YYYY</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2004">2004</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2001">2001</option>
+                                    <option value="2000">2000</option>
+                                    <option value="1999">1999</option>
+                                    <option value="1998">1998</option>
+                                    <option value="1997">1997</option>
+                                    <option value="1996">1996</option>
+                                    <option value="1995">1995</option>
+                                    <option value="1994">1994</option>
+                                    <option value="1993">1993</option>
+                                    <option value="1992">1992</option>
+                                    <option value="1991">1991</option>
+                                    <option value="1990">1990</option>
+                                    <option value="1989">1989</option>
+                                    <option value="1988">1988</option>
+                                    <option value="1987">1987</option>
+                                    <option value="1986">1986</option>
+                                    <option value="1985">1985</option>
+                                    <option value="1984">1984</option>
+                                    <option value="1983">1983</option>
+                                    <option value="1982">1982</option>
+                                    <option value="1981">1981</option>
+                                    <option value="1980">1980</option>
+                                    <option value="1979">1979</option>
+                                    <option value="1978">1978</option>
+                                    <option value="1977">1977</option>
+                                    <option value="1976">1976</option>
+                                    <option value="1975">1975</option>
+                                    <option value="1974">1974</option>
+                                    <option value="1973">1973</option>
+                                    <option value="1972">1972</option>
+                                    <option value="1971">1971</option>
+                                    <option value="1970">1970</option>
+                                    <option value="1969">1969</option>
+                                    <option value="1968">1968</option>
+                                    <option value="1967">1967</option>
+                                    <option value="1966">1966</option>
+                                    <option value="1965">1965</option>
+                                    <option value="1964">1964</option>
+                                    <option value="1963">1963</option>
+                                    <option value="1962">1962</option>
+                                    <option value="1961">1961</option>
+                                    <option value="1960">1960</option>
+                                    <option value="1959">1959</option>
+                                    <option value="1958">1958</option>
+                                    <option value="1957">1957</option>
+                                    <option value="1956">1956</option>
+                                    <option value="1955">1955</option>
+                                    <option value="1954">1954</option>
+                                    <option value="1953">1953</option>
+                                    <option value="1952">1952</option>
+                                    <option value="1951">1951</option>
+                                    <option value="1950">1950</option>
+                                    <option value="1949">1949</option>
+                                    <option value="1948">1948</option>
+                                    <option value="1947">1947</option>
+                                    <option value="1946">1946</option>
+                                    <option value="1945">1945</option>
+                                    <option value="1944">1944</option>
+                                    <option value="1943">1943</option>
+                                    <option value="1942">1942</option>
+                                    <option value="1941">1941</option>
+                                    <option value="1940">1940</option>
+                                    <option value="1939">1939</option>
+                                    <option value="1938">1938</option>
+                                    <option value="1937">1937</option>
+                                    <option value="1936">1936</option>
+                                    <option value="1935">1935</option>
+                                    <option value="1934">1934</option>
+                                    <option value="1933">1933</option>
+                                    <option value="1932">1932</option>
+                                    <option value="1931">1931</option>
+                                    <option value="1930">1930</option>
+                                    <option value="1929">1929</option>
+                                    <option value="1928">1928</option>
+                                    <option value="1927">1927</option>
+                                    <option value="1926">1926</option>
+                                    <option value="1925">1925</option>
+                                    <option value="1924">1924</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p class="quiz-love__error">Please choose your birthday</p>
+                    </div>
+
+                    <button class="quiz-love__btn btn-accent " data-next="quiz-love-item-14">
+                        <span>Continue</span>
+                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.5303 7.03033C16.8232 6.73744 16.8232 6.26256 16.5303 5.96967L11.7574 1.1967C11.4645 0.903806 10.9896 0.903806 10.6967 1.1967C10.4038 1.48959 10.4038 1.96447 10.6967 2.25736L14.9393 6.5L10.6967 10.7426C10.4038 11.0355 10.4038 11.5104 10.6967 11.8033C10.9896 12.0962 11.4645 12.0962 11.7574 11.8033L16.5303 7.03033ZM0 7.25H16V5.75H0V7.25Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+
+                </div>
+
+
+                <div id="quiz-love-item-14" class="quiz-love__item" data-step-name="country" data-question="country">
+                    <div class="quiz-love__progress-2">
+                        <span class="quiz-love__progress-item number-active">1</span>
+                        <span class="quiz-love__progress-item number-active">2</span>
+                        <span class="quiz-love__progress-item number-active">3</span>
+                        <span class="quiz-love__progress-item number-active">4</span>
+                        <span class="quiz-love__progress-line" style="--progress-width: 100%"></span>
+                    </div>
+                    <div class="quiz-love__item-box">
+                        <h3 class="quiz-love__item-title">Please select your country</h3>
+
+
+                        <div class="quiz-love__select-group quiz-love__select-group--country">
+                            <select id="quiz-love__select-country" class="quiz-love__select" name="country">
+                                <option value="" selected="selected">Select Country</option>
+                                <option value="5000">United States</option>
+                                <option value="5094">United Kingdom</option>
+                                <option value="5001">Canada</option>
+                                <option value="5002">Australia</option>
+                                <option value="5062">New Zealand</option>
+                                <option value="5087">Sweden</option>
+                                <option value="5029">Denmark</option>
+                                <option value="5063">Norway</option>
+                                <option value="5033">France</option>
+                                <option value="5004">Belgium</option>
+                                <option value="5047">Italy</option>
+                                <optgroup label="All Countries">
+                                    <option value="5010">Afghanistan</option>
+                                    <option value="5012">Albania</option>
+                                    <option value="5013">Algeria</option>
+                                    <option value="5112">American Samoa</option>
+                                    <option value="5113">Andorra</option>
+                                    <option value="5014">Angola</option>
+                                    <option value="5114">Anguilla</option>
+                                    <option value="8">Antarctica</option>
+                                    <option value="5015">Antigua</option>
+                                    <option value="5011">Argentina</option>
+                                    <option value="5017">Armenia</option>
+                                    <option value="5018">Aruba</option>
+                                    <option value="5003">Austria</option>
+                                    <option value="5115">Azerbaijan</option>
+                                    <option value="5019">Bahamas</option>
+                                    <option value="5116">Bahrain</option>
+                                    <option value="5020">Bangladesh</option>
+                                    <option value="5005">Barbados</option>
+                                    <option value="5110">Belarus</option>
+                                    <option value="5117">Belize</option>
+                                    <option value="5118">Benin</option>
+                                    <option value="5008">Bermuda</option>
+                                    <option value="5119">Bhutan</option>
+                                    <option value="5109">Bolivia</option>
+                                    <option value="5009">Bosnia and Herzegowina</option>
+                                    <option value="5120">Botswana</option>
+                                    <option value="29">Bouvet Island</option>
+                                    <option value="5006">Brazil</option>
+                                    <option value="31">British Indian Ocean Territory</option>
+                                    <option value="5122">Brunei Darussalam</option>
+                                    <option value="5007">Bulgaria</option>
+                                    <option value="5123">Burkina Faso</option>
+                                    <option value="5125">Burundi</option>
+                                    <option value="5021">Cambodia</option>
+                                    <option value="5126">Cameroon</option>
+                                    <option value="5127">Cape Verde</option>
+                                    <option value="5022">Cayman Islands</option>
+                                    <option value="5128">Central African Republic</option>
+                                    <option value="5129">Chad</option>
+                                    <option value="5023">Chile</option>
+                                    <option value="5024">China</option>
+                                    <option value="5130">Christmas Island</option>
+                                    <option value="5131">Cocos (Keeling) Islands</option>
+                                    <option value="5025">Colombia</option>
+                                    <option value="5132">Comoros</option>
+                                    <option value="5133">Congo</option>
+                                    <option value="5135">Cook Islands</option>
+                                    <option value="5026">Costa Rica</option>
+                                    <option value="52">Cote D'Ivoire</option>
+                                    <option value="5027">Croatia</option>
+                                    <option value="5137">Cuba</option>
+                                    <option value="5028">Cyprus</option>
+                                    <option value="5108">Czech Republic</option>
+                                    <option value="5138">Djibouti</option>
+                                    <option value="5139">Dominica</option>
+                                    <option value="5140">Dominican Republic</option>
+                                    <option value="61">East Timor</option>
+                                    <option value="5036">Ecuador</option>
+                                    <option value="5030">Egypt</option>
+                                    <option value="5141">El Salvador</option>
+                                    <option value="5142">Equatorial Guinea</option>
+                                    <option value="5143">Eritrea</option>
+                                    <option value="5031">Estonia</option>
+                                    <option value="5144">Ethiopia</option>
+                                    <option value="5145">Falkland Islands (Malvinas)</option>
+                                    <option value="5146">Faroe Islands</option>
+                                    <option value="5147">Fiji</option>
+                                    <option value="5032">Finland</option>
+                                    <option value="74">France, Metropolitan</option>
+                                    <option value="5148">French Guiana</option>
+                                    <option value="5149">French Polynesia</option>
+                                    <option value="77">French Southern Territories</option>
+                                    <option value="5150">Gabon</option>
+                                    <option value="5151">Gambia</option>
+                                    <option value="5152">Georgia</option>
+                                    <option value="5034">Germany</option>
+                                    <option value="5101">Ghana</option>
+                                    <option value="5153">Gibraltar</option>
+                                    <option value="5035">Greece</option>
+                                    <option value="5037">Greenland</option>
+                                    <option value="5154">Grenada</option>
+                                    <option value="5155">Guadeloupe</option>
+                                    <option value="5038">Guam</option>
+                                    <option value="5156">Guatemala</option>
+                                    <option value="5158">Guinea</option>
+                                    <option value="5159">Guinea-bissau</option>
+                                    <option value="5160">Guyana</option>
+                                    <option value="5161">Haiti</option>
+                                    <option value="94">Heard and Mc Donald Islands</option>
+                                    <option value="5162">Honduras</option>
+                                    <option value="5039">Hong Kong</option>
+                                    <option value="5040">Hungary</option>
+                                    <option value="5041">Iceland</option>
+                                    <option value="5042">India</option>
+                                    <option value="5043">Indonesia</option>
+                                    <option value="5103">Iran (Islamic Republic of)</option>
+                                    <option value="5163">Iraq</option>
+                                    <option value="5044">Ireland</option>
+                                    <option value="5045">Israel</option>
+                                    <option value="5048">Jamaica</option>
+                                    <option value="5049">Japan</option>
+                                    <option value="5050">Jordan</option>
+                                    <option value="5165">Kazakhstan</option>
+                                    <option value="5051">Kenya</option>
+                                    <option value="5166">Kiribati</option>
+                                    <option value="5167">Korea: Democratic People's Republic of</option>
+                                    <option value="5052">Korea: Republic of</option>
+                                    <option value="5053">Kuwait</option>
+                                    <option value="5168">Kyrgyzstan</option>
+                                    <option value="116">Lao People's Democratic Republic</option>
+                                    <option value="5054">Latvia</option>
+                                    <option value="5056">Lebanon</option>
+                                    <option value="5170">Lesotho</option>
+                                    <option value="5171">Liberia</option>
+                                    <option value="121">Libyan Arab Jamahiriya</option>
+                                    <option value="5173">Liechtenstein</option>
+                                    <option value="5055">Lithuania</option>
+                                    <option value="5174">Luxembourg</option>
+                                    <option value="5175">Macau</option>
+                                    <option value="5176">Macedonia: The Former Yugoslav Republic of</option>
+                                    <option value="5177">Madagascar</option>
+                                    <option value="5178">Malawi</option>
+                                    <option value="5057">Malaysia</option>
+                                    <option value="5060">Maldives</option>
+                                    <option value="5179">Mali</option>
+                                    <option value="5058">Malta</option>
+                                    <option value="5181">Marshall Islands</option>
+                                    <option value="5182">Martinique</option>
+                                    <option value="5183">Mauritania</option>
+                                    <option value="5184">Mauritius</option>
+                                    <option value="5185">Mayotte</option>
+                                    <option value="5059">Mexico</option>
+                                    <option value="5186">Micronesia: Federated States of</option>
+                                    <option value="5187">Moldova</option>
+                                    <option value="5188">Monaco</option>
+                                    <option value="5189">Mongolia</option>
+                                    <option value="5236">Montenegro</option>
+                                    <option value="5190">Montserrat</option>
+                                    <option value="5107">Morocco</option>
+                                    <option value="5064">Mozambique</option>
+                                    <option value="146">Myanmar</option>
+                                    <option value="5065">Namibia</option>
+                                    <option value="5191">Nauru</option>
+                                    <option value="5066">Nepal</option>
+                                    <option value="5061">Netherlands</option>
+                                    <option value="5192">Netherlands Antilles</option>
+                                    <option value="5193">New Caledonia</option>
+                                    <option value="5194">Nicaragua</option>
+                                    <option value="5195">Niger</option>
+                                    <option value="5102">Nigeria</option>
+                                    <option value="5196">Niue</option>
+                                    <option value="5197">Norfolk Island</option>
+                                    <option value="5198">Northern Mariana Islands</option>
+                                    <option value="5067">Oman</option>
+                                    <option value="5068">Pakistan</option>
+                                    <option value="5199">Palau</option>
+                                    <option value="5069">Panama</option>
+                                    <option value="5200">Papua New Guinea</option>
+                                    <option value="5070">Paraguay</option>
+                                    <option value="5071">Peru</option>
+                                    <option value="5072">Philippines</option>
+                                    <option value="169">Pitcairn</option>
+                                    <option value="5073">Poland</option>
+                                    <option value="5074">Portugal</option>
+                                    <option value="5075">Puerto Rico</option>
+                                    <option value="5076">Qatar</option>
+                                    <option value="5201">Reunion</option>
+                                    <option value="5077">Romania</option>
+                                    <option value="5078">Russian Federation</option>
+                                    <option value="5202">Rwanda</option>
+                                    <option value="5204">Saint Kitts and Nevis</option>
+                                    <option value="5079">Saint Lucia</option>
+                                    <option value="5206">Saint Vincent and the Grenadines</option>
+                                    <option value="5207">Samoa</option>
+                                    <option value="5208">San Marino</option>
+                                    <option value="5209">Sao Tome and Principe</option>
+                                    <option value="5080">Saudi Arabia</option>
+                                    <option value="5210">Senegal</option>
+                                    <option value="5235">Serbia</option>
+                                    <option value="5211">Seychelles</option>
+                                    <option value="5212">Sierra Leone</option>
+                                    <option value="5081">Singapore</option>
+                                    <option value="5105">Slovakia (Slovak Republic)</option>
+                                    <option value="5082">Slovenia</option>
+                                    <option value="5213">Solomon Islands</option>
+                                    <option value="5214">Somalia</option>
+                                    <option value="5083">South Africa</option>
+                                    <option value="194">South Georgia and the South Sandwich Islands</option>
+                                    <option value="5084">Spain</option>
+                                    <option value="5085">Sri Lanka</option>
+                                    <option value="197">St. Helena</option>
+                                    <option value="198">St. Pierre and Miquelon</option>
+                                    <option value="5215">Sudan</option>
+                                    <option value="200">Suriname</option>
+                                    <option value="5216">Svalbard and Jan Mayen Islands</option>
+                                    <option value="5217">Swaziland</option>
+                                    <option value="5088">Switzerland</option>
+                                    <option value="5218">Syrian Arab Republic</option>
+                                    <option value="5089">Taiwan</option>
+                                    <option value="5220">Tajikistan</option>
+                                    <option value="5106">Tanzania: United Republic of</option>
+                                    <option value="5090">Thailand</option>
+                                    <option value="5221">Togo</option>
+                                    <option value="5222">Tokelau</option>
+                                    <option value="5223">Tonga</option>
+                                    <option value="5091">Trinidad and Tobago</option>
+                                    <option value="5224">Tunisia</option>
+                                    <option value="5092">Turkey</option>
+                                    <option value="5225">Turkmenistan</option>
+                                    <option value="5226">Turks and Caicos Islands</option>
+                                    <option value="5227">Tuvalu</option>
+                                    <option value="5228">Uganda</option>
+                                    <option value="5093">Ukraine</option>
+                                    <option value="5111">United Arab Emirates</option>
+                                    <option value="224">United States Minor Outlying Islands</option>
+                                    <option value="5095">Uruguay</option>
+                                    <option value="5229">Uzbekistan</option>
+                                    <option value="5230">Vanuatu</option>
+                                    <option value="5231">Vatican City State (Holy See)</option>
+                                    <option value="5096">Venezuela</option>
+                                    <option value="5097">Viet Nam</option>
+                                    <option value="231">Virgin Islands (British)</option>
+                                    <option value="5232">Virgin Islands (U.S.)</option>
+                                    <option value="5233">Wallis and Futuna Islands</option>
+                                    <option value="234">Western Sahara</option>
+                                    <option value="5234">Yemen</option>
+                                    <option value="237">Zaire</option>
+                                    <option value="5098">Zambia</option>
+                                    <option value="5099">Zimbabwe</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <p class="quiz-love__error">Please choose your country</p>
+
+                        <p class="quiz-love__item-text">
+                            <span>By submitting the form I agree to the </span>
+                            <a class="quiz-love__link" href="#">Terms & Conditions</a>
+                        </p>
+
+                    </div>
+
+                    <button class="quiz-love__btn btn-accent " data-send="send">
+                        <span>Activate</span>
+                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.5303 7.03033C16.8232 6.73744 16.8232 6.26256 16.5303 5.96967L11.7574 1.1967C11.4645 0.903806 10.9896 0.903806 10.6967 1.1967C10.4038 1.48959 10.4038 1.96447 10.6967 2.25736L14.9393 6.5L10.6967 10.7426C10.4038 11.0355 10.4038 11.5104 10.6967 11.8033C10.9896 12.0962 11.4645 12.0962 11.7574 11.8033L16.5303 7.03033ZM0 7.25H16V5.75H0V7.25Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script src="./js/script.js?v=2.0.1"></script>
+
+
+</body>
+
+</html>
